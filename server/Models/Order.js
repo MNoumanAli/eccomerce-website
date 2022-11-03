@@ -26,8 +26,9 @@ const orderSchema = new mongoose.Schema(
         required : true,
        },
        status : {
-        type : Boolean,
-        reuqired : true
+        type : String,
+        reuqired : true,
+        default : pending
        }
     },
     {
