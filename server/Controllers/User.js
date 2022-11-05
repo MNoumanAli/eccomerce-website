@@ -74,3 +74,18 @@ export const getUser = (req, res) => {
         res.status(500).json(err)
     }
 }
+
+export const getAllUsers = (req, res) => {
+    // query paramer pass to get only first 7 latest user then
+    const query = req.query.new
+    try{
+
+        const users = query ? await user.find().sort({id : -1}).limit(7) :await user.find()
+    
+        res.status(200).json(users)
+    }
+    catch(err)
+    {
+        res.status(500).json(err)
+    }
+}
