@@ -3,7 +3,7 @@ const AuthUser = (req, res, next) => {
     const accessToken = req.headers.accessToken
     if(accessToken)
     {
-        const token = accessToken.split(" ").[1]
+        const token = accessToken.split(" ")[1]
         jwt.verify(token , "Nouman" , (err, user) => {
             if(error)
             {
