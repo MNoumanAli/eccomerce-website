@@ -39,8 +39,6 @@ export const login = async (req, res) => {
 }
 
 export const updateUser = (req, user) => {
-    if(req.user.id === req.params.id || req.user.isAdmin)
-    {
         try{
             const updateUser = user.findByIdAndUpdate(req.params.id , {
                 // this will set everything we have in req.body
@@ -52,5 +50,27 @@ export const updateUser = (req, user) => {
         {
             res.status(500).json(err)
         }
+}
+
+export const deleteUser  = (req,res) => {
+    try{
+        await user.findByIdAndDelete(req.params.id)
+        res.status(200).json("User has been deleted.")
+    }
+    catch(err)
+    {
+        res.status(500).json(err)
+    }
+}
+
+export const getUser = (req, res) => {
+    try{
+        const newUser = await user.findById(req.params.id)
+        const {password, ...others} = newUser
+        res.status(200).json(others)
+    }
+    catch(err)
+    {
+        res.status(500).json(err)
     }
 }
