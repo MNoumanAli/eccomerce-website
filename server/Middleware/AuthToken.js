@@ -12,7 +12,7 @@ const AuthUser = (req, res, next) => {
             else
             {
                 req.user = user
-                next;
+                next();
             }
         })
     }
