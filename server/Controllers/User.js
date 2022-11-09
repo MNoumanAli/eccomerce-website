@@ -89,3 +89,7 @@ export const getAllUsers = (req, res) => {
         res.status(500).json(err)
     }
 }
+
+export const getUserStatus = (req, res) => {
+    
+}
