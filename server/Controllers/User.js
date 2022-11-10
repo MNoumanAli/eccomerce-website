@@ -90,6 +90,6 @@ export const getAllUsers = (req, res) => {
     }
 }
 
-export const getUserStatus = (req, res) => {
-    
+export const getUserStats = (req, res) => {
+    // 1:18:00
 }
