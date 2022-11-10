@@ -3,9 +3,11 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import dotenve from "dotenv";
 import router from "./Routes/Users.js"
+import cors from 'cors'
 dotenve.config()
 const app = express()
 
+app.use(cors())
 app.use(bodyParser.json({extended : true}))
 app.use(bodyParser.urlencoded({extended: true}))
 
