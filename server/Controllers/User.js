@@ -1,11 +1,11 @@
 import user from "../Models/Users"
 
 export const signUp = async (req, res) => {
-    const newUser = new user{
+    const newUser = new user({
         username : req.body.username,
         password : req.body.password,
         email : req.body.email
-    }
+    })
     try{
         const savedUser = await newUser.save()
         console.log(savedUser)
@@ -52,7 +52,7 @@ export const updateUser = (req, user) => {
         }
 }
 
-export const deleteUser  = (req,res) => {
+export const deleteUser  = async (req,res) => {
     try{
         await user.findByIdAndDelete(req.params.id)
         res.status(200).json("User has been deleted.")
@@ -63,7 +63,7 @@ export const deleteUser  = (req,res) => {
     }
 }
 
-export const getUser = (req, res) => {
+export const getUser = async(req, res) => {
     try{
         const newUser = await user.findById(req.params.id)
         const {password, ...others} = newUser
@@ -75,7 +75,7 @@ export const getUser = (req, res) => {
     }
 }
 
-export const getAllUsers = (req, res) => {
+export const getAllUsers = async(req, res) => {
     // query paramer pass to get only first 7 latest user then
     const query = req.query.new
     try{
